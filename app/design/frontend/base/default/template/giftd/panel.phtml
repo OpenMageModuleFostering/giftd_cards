@@ -1,0 +1,30 @@
+<?php
+$show_panel  = Mage::getStoreConfig('giftd_cards/panel_settings/panel_is_active',Mage::app()->getStore());
+$use_custom_js = Mage::getStoreConfig('giftd_cards/tab_settings/custom_code_is_active',Mage::app()->getStore());
+$custom_js = Mage::getStoreConfig('giftd_cards/tab_settings/tab_js_code',Mage::app()->getStore());
+
+$panel_options =
+    'window.giftdOptions = {'.
+         'pid: "'.Mage::getStoreConfig('giftd_cards/api_settings/partner_token',Mage::app()->getStore()).'",'.
+         'tab: {'.
+            'enabled: '.(Mage::getStoreConfig('giftd_cards/panel_settings/panel_is_active',Mage::app()->getStore()) ? 'true' : 'false').','.
+            'position: "'.(Mage::getStoreConfig('giftd_cards/panel_settings/panel_position',Mage::app()->getStore()) ?: 'left').'"'.
+        '}'.
+    '};';
+
+if ($show_panel && $use_custom_js && $custom_js)
+    $panel_options = $custom_js . ';';
+
+?>
+
+<script>
+    <?=$panel_options?>
+    (function(){
+        var s = (window.giftdOptions.tab && window.giftdOptions.tab.enabled) ? "giftd.js" : "giftd_no_tab.js";
+        var el = document.createElement("script");
+        el.id = "giftd-script";
+        el.async = true;
+        el.src = "https://static.giftd.ru/embedded/" + s;
+        document.getElementsByTagName("head")[0].appendChild(el);
+    })();
+</script>';

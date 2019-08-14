@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Giftd_Cards>
+            <version>1.0.0</version>
+        </Giftd_Cards>
+    </modules>
+
+    <global>
+        <helpers>
+            <giftd_cards>
+                <!-- This is where we define our helper directory -->
+                <class>Giftd_Cards_Helper</class>
+            </giftd_cards>
+        </helpers>
+
+        <models>
+            <giftd_cards>
+                <!-- This is where we define our model directory -->
+                <class>Giftd_Cards_Model</class>
+            </giftd_cards>
+        </models>
+
+        <blocks>
+            <giftd_cards><class>Giftd_Cards_Block</class></giftd_cards>
+        </blocks>
+
+        <!-- And finally we define our resource setup script -->
+        <resources>
+            <giftd_cards_setup>
+                <setup>
+                    <module>Giftd_Cards</module>
+                </setup>
+            </giftd_cards_setup>
+        </resources>
+
+        <events>
+            <admin_system_config_changed_section_giftd_cards>
+                <observers>
+                    <giftd_cards>
+                        <class>giftd_cards/observer</class>
+                        <method>updateApiKey</method>
+                        <type>singleton</type>
+                    </giftd_cards>
+                </observers>
+            </admin_system_config_changed_section_giftd_cards>
+            <controller_action_predispatch_checkout_cart_couponPost>
+                <observers>
+                    <giftd_cards>
+                        <class>giftd_cards/observer</class>
+                        <method>processCoupon</method>
+                        <type>singleton</type>
+                    </giftd_cards>
+                </observers>
+            </controller_action_predispatch_checkout_cart_couponPost>
+            <sales_order_place_after>
+                <observers>
+                    <giftd_cards>
+                        <class>giftd_cards/observer</class>
+                        <method>checkoutCoupon</method>
+                        <type>singleton</type>
+                    </giftd_cards>
+                </observers>
+            </sales_order_place_after>
+        </events>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <giftd_cards module="giftd_cards">
+                    <file>giftd_panel.xml</file>
+                </giftd_cards>
+            </updates>
+        </layout>
+    </frontend>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <giftd_cards>
+                    <file>giftd_cards.xml</file>
+                </giftd_cards>
+            </updates>
+        </layout>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <giftd_cards translate="title" module="giftd_cards">
+                                            <title>Giftd Cards Settings</title>
+                                        </giftd_cards>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <Giftd_Cards before="Mage_Adminhtml">Giftd_Cards_Adminhtml</Giftd_Cards>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+</config>

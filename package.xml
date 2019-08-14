@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package>
+    <name>Giftd_Cards</name>
+    <version>1.0.0</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/gpl-license.php">GPL</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Provides integration of Magento and Giftd &#x2014; digital gift cards platform.</summary>
+    <description>The extension integrates Magento and Giftd. &#xD;
+&#xD;
+Giftd is a platform-as-a-service. It allows businesses to issue, sell and accept digital gift cards. &#xD;
+&#xD;
+The extension has three primary features: &#xD;
+&#xD;
+&#x2014; Install Giftd embedded solution on your website;&#xD;
+&#xD;
+&#x2014; Add Giftd tab to your website, allowing users to send gift cards;&#xD;
+&#xD;
+&#x2014; Accept gift cards using an existing discount code field.</description>
+    <notes>First public release.</notes>
+    <authors><author><name>Alexander Nevidimov</name><user>nevidimov</user><email>nevidimov@giftd.ru</email></author></authors>
+    <date>2014-10-10</date>
+    <time>19:23:02</time>
+    <contents><target name="magecommunity"><dir><dir name="Giftd"><dir name="Cards"><dir name="Helper"><file name="Data.php" hash="a07c9c0bb8c274a37f245be65941df59"/></dir><dir name="Model"><file name="GiftdClient.php" hash="f32c25a85dd0efd8b60b5771f8320e99"/><file name="Observer.php" hash="c2c1de2ff722335c32e05ce2f7832365"/><dir name="System"><dir name="Config"><dir name="Source"><file name="Tabposition.php" hash="cc645c33159bf2449acf58bba336075d"/></dir></dir></dir></dir><dir name="etc"><file name="config.xml" hash="0d6bbce8bbf0f0c1e14920a00e953dde"/><file name="system.xml" hash="70e7e19dc34ff6e38a3ff8f79300c781"/></dir></dir></dir></dir></target><target name="magedesign"><dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><file name="giftd_panel.xml" hash="3d9ad4a36cdeab1cfb4bd7cc5dea5080"/></dir><dir name="template"><dir name="giftd"><file name="panel.phtml" hash="a725ec457409fc71b19243f930c1eede"/></dir></dir></dir></dir></dir></dir></target><target name="mageetc"><dir><dir name="etc"><dir name="modules"><file name="Giftd_Cards.xml" hash=""/></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.0.0</min><max>5.9.9</max></php></required></dependencies>
+</package>

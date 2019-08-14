@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Giftd_Cards",
+    "type": "magento-module",
+    "license": "GPL",
+    "homepage": "",
+    "description": "Provides integration of Magento and Giftd — digital gift cards platform.",
+    "authors": [
+    {
+        "name": "Alexander Nevidimov",
+        "email": "nevidimov@giftd.ru"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
