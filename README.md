@@ -1,3 +1,5 @@
+
+
 ## Original Package Description
 
 Provides integration of Magento and Giftd — digital gift cards platform.
